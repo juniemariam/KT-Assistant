@@ -1,0 +1,35 @@
+
+# Core ML and LLM
+torch==2.1.0
+transformers==4.46.3
+sentence-transformers==2.6.0
+faiss-cpu==1.7.4
+
+# RAG + Orchestration
+langchain-core==0.2.43
+langchain-community==0.2.19
+langchain-huggingface==0.0.3
+langchain-text-splitters==0.2.4
+
+
+# Communication APIs
+slack_sdk==3.35.0
+atlassian-python-api==4.0.4
+google-generativeai==0.1.0rc1
+google-api-python-client==2.174.0
+google-auth==2.40.3
+
+# Parsing & Utilities
+beautifulsoup4==4.13.4
+python-dotenv==1.0.1
+pandas==2.0.3
+tqdm==4.67.1
+requests==2.32.4
+
+# Optional (if you use whylogs)
+whylogs
+
+# Needed for Hugging Face & tokenizer support
+huggingface-hub==0.33.1
+tokenizers==0.20.1
+safetensors==0.5.3

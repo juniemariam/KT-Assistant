@@ -1,0 +1,26 @@
+# Frontend deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kt-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kt-frontend
+  template:
+    metadata:
+      labels:
+        app: kt-frontend
+    spec:
+      containers:
+        - name: kt-frontend
+          image: juniemariam/kt-frontend:latest
+          ports:
+            - containerPort: 8501
+          env:
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gemini-secret
+                  key: api-key

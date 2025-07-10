@@ -1,0 +1,13 @@
+# Backend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: kt-backend-service
+spec:
+  selector:
+    app: kt-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP

@@ -1,0 +1,36 @@
+# Backend deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kt-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kt-backend
+  template:
+    metadata:
+      labels:
+        app: kt-backend
+    spec:
+      containers:
+        - name: kt-backend
+          image: juniemariam/kt-backend:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gemini-secret
+                  key: api-key
+          volumeMounts:
+            - name: slack-images
+              mountPath: /app/data/slack_images
+            - name: vector-store
+              mountPath: /app/vector_store
+      volumes:
+        - name: slack-images
+          emptyDir: {}
+        - name: vector-store
+          emptyDir: {}
